@@ -1,0 +1,17 @@
+# The service name, this will be part of the endpoint of the Prisma API
+
+# The deployment stage, this will also be part of the API endpoint
+
+endpoint: 'https://us1.prisma.sh/public-bowtalon-466/hackernews-node/dev'
+
+# Points to the file that holds your data model
+datamodel: datamodel.graphql
+
+# Deploy hook
+hooks:
+  post-deploy:
+    - graphql get-schema --project database
+
+
+# You can only access the API when providing JWTs that are signed with this secret
+secret: mysecret123
